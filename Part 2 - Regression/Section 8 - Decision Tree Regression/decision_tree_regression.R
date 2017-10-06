@@ -6,9 +6,9 @@ dataset = dataset[2:3]
 
 # Create regressor
 #poly_reg = lm(formula = Salary ~ ., data = dataset)
-#install.packages('rpart')
-library(rpart)
-reg = rpart(formula = Salary ~ ., data = dataset, control = rpart.control(minsplit = 1))
+#install.packages('randomForest')
+library(randomForest)
+reg = randomForest(x = dataset[1], y = dataset$Salary, ntree = 1000, set.seed(1234))
 
 # Predict svr
 y_poly = predict(reg, data.frame(Level = 6.5))
